@@ -126,18 +126,13 @@ app.locals.title = "My App";
 
  
 
-app.listen(5000, function(err) {
+app.listen(80, function(err) {
  
     if (!err)
         console.log("Site is live");
     else console.log(err)
  
 });
-
-/*http.createServer(app).listen('5000', function(){
-  console.log('Express server listening on port ' );
-});
-*/
 
     
 /*
