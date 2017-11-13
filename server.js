@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
- var passport   = require('passport');
+var passport   = require('passport');
 var session    = require('express-session');
 var bodyParser = require('body-parser');
 var env = require('dotenv').load();
@@ -10,6 +10,7 @@ var http = require('http');
 /*var flash = require('express-flash');*/
 var flash = require('connect-flash');
 var paginate = require('express-paginate');
+const port = process.env.PORT || 80;
 app.use(paginate.middleware(10, 50));
 
 
@@ -126,10 +127,10 @@ app.locals.title = "My App";
 
  
 
-app.listen(80, function(err) {
+app.listen(port, function(err) {
  
     if (!err)
-        console.log("Site is live");
+        console.log("Site is live Listining on ${port}");
     else console.log(err)
  
 });
