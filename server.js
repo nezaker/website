@@ -130,7 +130,7 @@ app.locals.title = "My App";
 app.listen(port, function(err) {
  
     if (!err)
-        console.log("Site is live Listining on ${port}");
+        console.log("Site is live Listining on "+ port);
     else console.log(err)
  
 });
