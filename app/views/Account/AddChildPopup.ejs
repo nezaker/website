@@ -1,0 +1,95 @@
+<!doctype html>
+<div class="modal fade popup_view" id="AddChildPopup" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                <h3 class="modal-title">اضافة ابناء</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+          
+                    <div class="col-md-12 product_content">
+                        <h4> <span></span></h4>
+                    
+                       <form id="FamilyChild" name="FamilyChild"  >
+                     <div class="row">
+                       <div class="col-md-6">
+                           
+                          <div class="form-group">
+                                  <input class="form-control" id="first_name" name ="first_name" type="text" 
+                                  ng-model="Child.first_name" placeholder="الإسم الأول*" required data-validation-required-message="الإسم الاول">
+                          </div>
+                          <div class="form-group">
+                                  <input class="form-control" id="last_name" name ="last_name" type="text"  ng-model="Child.last_name" placeholder="الإسم الثاني*" required data-validation-required-message="الإسم الثاني">
+                          </div>
+                         
+
+              <div class="form-group">
+             <input class="form-control" id="phone_numbers" name ="phone_numbers"  maxlength="15" pattern="\d*"   ng-model="Child.phone_numbers" placeholder="رقم التليفون*" required data-validation-required-message="رقم التليفون.">
+           </div>
+                     <div class="form-group">
+          <lable for="">المرحله التعليميه</lable>
+   
+        <select class="form-control" name ="Stage_id" id ="Stage" required="true"
+     ng-model="selectedStage"  ng-change="getGradesByStageID(selectedStage)"  >
+           <option value="">اختر</option>
+           <option ng-repeat="stage in stages" value="{{stage.id}}"
+             ng-selected="stage.id==Child.grade.stage_id" >{{stage.name}}</option>
+          </select>
+
+        </div>
+<div class="form-group">
+          <lable for="">الصف الدراسى</lable>
+          
+       <select class="form-control" name ="grade_id" id ="grade" required="true"
+     ng-model="Child.grade_id"  >
+           <option value="">اختر</option>
+           <option ng-repeat="grade in grades" value="{{grade.id}}"
+            ng-selected="grade.id==Child.grade_id" >{{grade.name}}</option>
+          </select>
+        </div>
+        </div>
+                    <div class="col-md-6">
+                     <div class="form-group">
+              <input class="form-control" id="email" name ="email" type="email" placeholder="البريد الألكتروني *" ng-model="Child.email" required data-validation-required-message="البريد الألكتروني.">
+                   
+            </div>
+
+            <div class="form-group">
+              <input class="form-control"  name="password" type="password" ng-model="Child.password" placeholder="كلمة المرور *" required data-validation-required-message="كلمة المرور"/>
+            </div>
+            <div class="form-group">
+              <input class="form-control"  name="Repeatepassword" type="password" placeholder="تأكيد كلمة المرور *" required data-validation-required-message="كلمة المرور غير مطابقه"/>
+            </div>
+<div class="form-group">
+          </div>
+      </div></div>
+                   <div class="row">
+
+       <div class="col-lg-12 text-center">
+              <div class="form-group">
+</div>
+          
+          </div>
+</div>
+</div>   
+ </form>
+    
+                        </div>
+                        <div class="space-ten"></div>
+                        <div class="btn-ground">
+                        <button class="btn btn-primary" data-dismiss="modal" type="submit" ng-click="AddFamilyChild()"> {{Child.id==null?"اضافه":"تعديل"}}  
+                                </button>
+        
+             <button class="btn btn-primary" data-dismiss="modal" type="button">
+           <i class="fa fa-times"></i>
+                    Close 
+                                </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

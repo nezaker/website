@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<% include ../layout/layoutAnonymous %>
+    <section id="contact" ng-app>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="section-heading"> إنشاء حساب.</h3>
+                    <h3 class="section-subheading">
+                  قم بالتسجيل الان لأضافة الدروس الخاصة بك
+                </h3>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-lg-12 text-center">
+                            <div class="form-group">
+
+                 <a class="btn   btn-social btn-facebook" href="/auth/facebook">
+                  <span class="fa fa-facebook"></span> Sign up with Facebook
+                  </a>
+                  <a class="btn  btn-social btn-google" href="/auth/google">
+                    <span class="fa fa-google"></span> Sign up with Google
+                 </a>
+            
+                 <a class="btn  btn-social btn-twitter" href="/auth/twitter">
+                    <span class="fa fa-twitter"></span> Sign up with Twitter
+                  </a>
+                </div>
+                </div>
+              </div>
+                <div class="row">
+                <div class="col-lg-12 text-center">
+            
+            <h6 class="section-subheading">   
+                 او الاشتراك باستخدام البريد الالكترونى
+                </h6>
+            </div>
+            </div>
+          
+                <form id="signup" name="signup" method="post" action="/signup">
+                     <div class="row">
+                       <div class="col-md-6">
+                           
+                          <div class="form-group">
+                                  <input class="form-control" id="first_name" name ="first_name" type="text" placeholder="الإسم الأول*" required data-validation-required-message="الإسم الاول">
+                          </div>
+                          <div class="form-group">
+                                  <input class="form-control" id="last_name" name ="last_name" type="text" placeholder="الإسم الثاني*" required data-validation-required-message="الإسم الثاني">
+                          </div>
+                         
+
+              <div class="form-group">
+             <input class="form-control" id="phone_numbers" name ="phone_numbers"  maxlength="15" pattern="\d*" placeholder="رقم التليفون*" required data-validation-required-message="رقم التليفون.">
+           </div>
+              <div class="form-group">
+
+           <select class="form-control" name ="city_id" id ="city"   >
+            <option value="">اختر المدينه</option>
+        
+            <% for(var i=0; i < cities.length; i++) { 
+            %>
+            <option value="<%=cities[i].id %>"  ><%=cities[i].name %></option> 
+                <%}%>
+          </select>
+          </div>
+        </div>
+                    <div class="col-md-6">
+                     <div class="form-group">
+              <input class="form-control" id="email" name ="email" type="email" placeholder="البريد الألكتروني *" required data-validation-required-message="البريد الألكتروني.">
+                   
+            </div>
+
+            <div class="form-group">
+              <input class="form-control"  name="password" type="password" placeholder="كلمة المرور *" required data-validation-required-message="كلمة المرور"/>
+            </div>
+            <div class="form-group">
+              <input class="form-control"  name="Repeatepassword" type="Repeatepassword" placeholder="تأكيد كلمة المرور *" required data-validation-required-message="كلمة المرور غير مطابقه"/>
+            </div>
+
+           <div class="form-group">
+
+       <select class="form-control" name ="accountType_id" id ="accountType"   >
+            <option value="">اختر نوع الحساب</option>
+        
+            <% for(var i=0; i < account_types.length; i++) { 
+            %>
+            <option value="<%=account_types[i].id %>"  ><%=account_types[i].name %></option> 
+                <%}%>
+          </select>
+          </div>
+      </div></div>
+                   <div class="row">
+
+       <div class="col-lg-12 text-center">
+              <div class="form-group">
+              <input class="btn btn-xl" type="submit" value="اشتراك">
+</div>
+          
+          </div>
+</div>
+</div>    </form>
+
+        </div>
+    </section>
+    <% include ../layout/footer %>

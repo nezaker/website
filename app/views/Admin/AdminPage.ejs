@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+    <link href="http://localhost:5000/nezaker/css/AdminStyle.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+  
+     $(document).ready(function()
+      {
+        var navItems = $('.admin-menu  > a');
+        var navListItems = $('.admin-menu ');
+        var allWells = $('.admin-content');
+        var allWellsExceptFirst = $('.admin-content:not(:first)');
+        allWellsExceptFirst.hide();
+        navItems.click(function(e)
+        {
+            e.preventDefault();
+            navListItems.removeClass('active');
+            $(this).closest('li').addClass('active');
+            allWells.hide();
+            var target = $(this).attr('data-target-id');
+            $('#' + target).show();
+console.log(target);
+
+     //var element = angular.element($('#GradeGrid'));
+     var element = angular.element($('#'+target+'List'));
+     var controller = element.controller();
+     var scope = element.scope();
+console.log(controller);
+console.log(scope);
+//console.log(scope.GridN);
+        });
+        });
+</script>
+<% include ../layout/Defaultlayout %>
+<section id="contact">
+<div class="container">
+<%
+ var PageName="ViewSubject";
+getPriceChgArrow = function(value) {
+    PageName=value;
+}
+%>
+
+      <div class="row row-offcanvas row-offcanvas-right">
+ <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group admin-menu ">
+<!--                    <a href="" data-target-id="profile" class="list-group-item">  Profile</a>
+ -->                  <a href="" data-target-id="viewContent" class="list-group-item">Video</a>
+                 <a href="" data-target-id="viewLesson" class="list-group-item">Lessons</a>
+                 <a href="" data-target-id="viewSubject" class="list-group-item">Subjects</a>
+                <a href="" data-target-id="viewGrades" class="list-group-item">Grades</a>
+                <a href="" data-target-id="viewStages" class="list-group-item">Stages</a>
+                <a href="" data-target-id="viewUsers" class="list-group-item">Users</a>
+                <a href="" data-target-id="viewRoles" class="list-group-item">Roles</a>
+         </div>
+        </div><!--/span-->
+        <div class="col-12 col-md-9">
+          <p class="float-right d-md-none">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+        <!-- 
+           <div class=" admin-content" id="profile">
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Name</h3>
+                    </div>
+                    <div class="panel-body">
+                        Ashish Patel
+                    </div>
+                </div>
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Email</h3>
+                    </div>
+                    <div class="panel-body">
+                        ashishpatel0720@gmail.com
+                    </div>
+                </div>
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Last Password Change</h3>
+
+                    </div>
+                    <div class="panel-body">
+                        4 days Ago
+                    </div>
+                </div>
+
+            </div> -->
+                   <div class=" admin-content" id="viewContent">
+
+           <% include ../Content/ContentPartial %>
+</div>
+     <div class=" admin-content" id="viewLesson">
+
+           <% include ../Lesson/LessonPartial %>
+</div>
+     <div class=" admin-content" id="viewSubject">
+
+           <% include ../Subject/SubjectPartial %>
+</div>
+     <div class=" admin-content" id="viewGrades">
+
+           <% include ../Grade/GradePartial %>
+</div>
+     <div class=" admin-content" id="viewStages">
+
+           <% include ../Stage/StagePartial %>
+</div>
+     <div class=" admin-content" id="viewUsers">
+
+           <% include ../Account/UserPartial %>
+</div>
+     <div class=" admin-content" id="viewRoles">
+
+           <% include ../Role/RolePartial %>
+</div>
+
+   
+   
+        <!--   </div> --><!--/row-->
+
+
+        <!--   </div> --><!--/row-->
+        </div><!--/span-->
+
+       
+
+      </div><!--/row-->
+
+      <hr>
+
+
+    </div>
+  </section>
+<% include ../layout/footer %>

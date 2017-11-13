@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<% include ../layout/Defaultlayout %>
+    <section id="contact">
+
+    <div class="container">
+          <div class="row row-offcanvas row-offcanvas-right">
+
+   <% include ../Admin/AdminSideNav %>
+
+    <div class="col-12 col-md-9">
+
+      <p>
+        <a href="/createRole" class="btn btn-primary btn-lg">Add New </a>
+      </p>
+
+    <table class="table table-striped table-hover">
+  
+         <% for(var i=0; i < roles.length; i++) { %>
+       <tr>
+            <td><%=roles[i].id%></td>
+<!--             <td><%=roles[i].name%></td>
+ -->           <td><%=roles[i].role.name%></td>
+           <td><%=roles[i].permission.name%></td>
+         
+            <td>
+             <a class="a-inside edit" href="../UpdateRole/<%=roles[i].id%>">Edit</a>
+                   
+             <a class="a-inside delete" href="../deleteRole/<%=roles[i].id%>">Delete</a>
+                    
+            </td>
+    </tr>
+<%}%>
+  
+  </table>
+ <% include ../layout/Paging %>
+</div>
+</div>
+    </div>
+    </section>
+<% include ../layout/footer %>

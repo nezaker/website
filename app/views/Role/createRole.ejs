@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<% include ../layout/layout %>
+  
+  <div class ="container"
+       data-ng-cloak
+         data-ng-app="AppModule"
+       data-ng-controller="SubjectController">
+    
+    <form
+       class="navbar-form navbaar-left" role="search"
+     method='post', name='formSubject' , action='/createSubject'>
+      <div class ="row">
+        <div class="form-group">
+          <lable for="">name</lable>
+          <input type="text"
+                 class="form-control"
+                 placeholder="name"
+                 id="name"
+                 name="name"
+                 style="width:100%" required=""/>
+        </div>
+      </div>
+      <div class ="row">
+        <div class="form-group">
+          <lable for="">grade_id</lable>
+     <!--   <select class="form-control"
+     name ="grade"
+     id ="grade"
+     
+     >
+     <option value="">Please select grade</option>
+     <option ng-repeat="grade in Grades"
+     value={{grade.id}}>{{grade.name}}></option></select>
+      -->
+       <select class="form-control" name ="grade_id" id ="grade"   >
+            <option value="">Please select grade</option>
+        
+            <% for(var i=0; i < grades.length; i++) { 
+            %>
+            <option value="<%=grades[i].id %>"  ><%=grades[i].name %></option> 
+                <%}%>
+          </select>
+        
+        </div>
+      </div>
+      <div class ="row">
+        <div class="form-group">
+          <lable for="">status</lable>
+          <input type="text"
+                 class="form-control"
+                 placeholder="status"
+                 id="status"
+                 name="status"
+                 style="width:100%" required=""/>
+        </div>
+      </div>
+      <div class ="row">
+        <div class="form-group">
+          <lable for="">ordering</lable>
+          <input type="text"
+                 class="form-control"
+                 placeholder="ordering"
+                 id="ordering"
+                 name="ordering"
+                 style="width:100%" required=""/>
+        </div>
+      </div>
+     <div class ="row">
+        <div class="form-group">
+          <lable for="">Description</lable>
+          <textarea 
+                 class="form-control"
+                 placeholder="Description"
+                 id="description"
+         rows="5"
+         columns="30"
+                 name="description"
+                 style="width:100%" required="" ></textarea>
+        </div>
+      </div>
+      <div class ="row">
+        <div class="form-group">
+            <input type="submit" name="submit" value="Save"/>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+
+  <script src="nezaker/app/AppModule.js"></script>
+  
+    <script src="nezaker/app/GradeService.js"></script>
+  <script src="nezaker/app/SubjectService.js"></script>
+  <script src="nezaker/app/SubjectController.js"></script>
+
+<% include ../layout/footer %>

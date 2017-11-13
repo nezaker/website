@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<% include ../layout/Defaultlayout %>
+  <script src="http://localhost:5000/nezaker/app/ContentController.js"></script>
+
+<div ng-controller="ContentController" >
+
+    <section id="contact">
+
+    <div class="container">
+      <% include ../layout/StagesNav %> 
+      <div class="row" >  
+        <p>
+          <a href="/createContent" class="btn btn-primary btn-lg">اضافة درس جديد </a>
+        </p>
+      </div>
+      <div class="row" ng-show="ViewSubjectDiv">
+            <div ng-show="SelectedSubject.length==0">لا يوجد مواد </div>
+
+                <div ng-repeat="sub in SelectedSubject" width="50%" class="col-md-2 portfolio-item">
+                      <button style="background-color:transparent; border: none;   color: inherit;" class="navbar-btn portfolio-link" href=" " ng-click="getLessonsBySubjectID(sub.id)">
+
+                        <img class="img-fluid portfolio-img " width="100" height="100" src="nezaker/SubjectIcons/{{ sub.IconUrl}} " ng-show={{sub.IconUrl!=null}} alt="">
+
+                        <img class="img-fluid portfolio-img " width="100" height="100" src="nezaker/SubjectIcons/library (1).png" ng-show={{sub.IconUrl==null}}  alt="">
+                    <!-- </a> -->
+                      </button>
+                      <div class="portfolio-caption">
+                        <h4>{{sub.name}}%></h4>
+                      </div>
+                </div>
+      </div>
+      <div class="row" ng-show="ViewLessonDiv" >
+        <div ng-show="SelectedContents.length==0">لا يوجد دروس </div>
+        <div ng-repeat="content in SelectedContents" width="50%" class="col-md-2 ">
+           <a data-toggle="modal" ng-click="LoadContentPopup(content)" href="#viewContentModal1">
+            <img class="img-fluid portfolio-img " src={{content.thumbnail}} alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h6>{{ content.lesson.name}}</h6>
+              <h6>{{content.lesson.subject.name}}</h6>
+               <p class="text-muted">{{content.lesson.subject.grade.name}}</p>
+               <p class="text-muted">{{content.user.first_name}} {{content.user .last_name}}</p>
+            </div>
+        </div>
+   </div> 
+</div>
+
+    </section>
+      <div class="LargePopup_view modal fade"  id="viewContentModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body"  id ="ContentIFrame">
+                                <!-- Project Details Go Here -->
+                                <h2>{{ContentPopup.lesson.name}}</h2>
+                                <p class="item-intro text-muted">
+                                    {{ContentPopup.lesson.subject.grade.name}}  
+                                    {{ContentPopup.lesson.subject.grade.stage.name}}-{{ContentPopup.lesson.subject.name}} - {{ContentPopup.lesson.name}} 
+                                </p>
+                             
+                                 <iframe class="video w100" width="640" height="360" 
+                                 src="{{ContentUrl}}" frameborder="0" allowfullscreen></iframe>
+
+                                <ul class="list-inline">
+                                    <li>Date: {{ContentPopup.created_at | date:'medium'}}</li>
+                                    <li>{{ContentPopup.user.first_name}}  {{ContentPopup.user.last_name}}</li>
+                                    <li>{{ContentPopup.lesson.subject.grade.name}}  
+                                    -{{ContentPopup.lesson.subject.grade.stage.name}}-{{ContentPopup.lesson.subject.name}} -{{ContentPopup.lesson.name}}  </li>
+                                </ul>
+                                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                    <i class="fa fa-times"></i>
+                                    Close 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+  
+  
+<% include ../layout/footer %>
