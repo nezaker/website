@@ -126,7 +126,7 @@ app.locals.title = "My App";
 
  
 
-app.listen(8080, function(err) {
+app.listen(80, function(err) {
  
     if (!err)
         console.log("Site is live");
